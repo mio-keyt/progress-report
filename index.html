@@ -1,0 +1,133 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Centsibly - Login</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #FFF7F2;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+    .navbar-top, .navbar-bottom {
+      background-color: #F79D1F;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      align-items: center;
+    }
+    .navbar-top img {
+      width: 40px;
+      margin-right: 1rem;
+    }
+    .navbar-top h2 {
+      font-style: italic;
+      font-weight: 600;
+      margin: 0 auto;
+    }
+    .navbar-bottom p {
+      font-style: italic;
+      font-weight: 600;
+      margin: 0 auto;
+    }
+    .main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  padding: 3rem 1rem;
+}
+    .login-form-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+    .login-form input {
+      display: block;
+      width: 95%;
+      margin: 0.5rem 0;
+      padding: 0.7rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .submit-button {
+      width: 100%;
+      background-color: #F79D1F;
+      color: white;
+      border: 2px solid white;
+      border-radius: 50px;
+      padding: 8px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .submit-button:hover {
+      background-color: #e68a00;
+    }
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .social-icon {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+    .banner-img {
+      width: 400px;
+      max-width: 100%;
+      border-radius: 10px;
+    } 
+img {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar-top">
+    <img src="images/logo.png" alt="Centsibly Logo" />
+    <h2>Centsibly – Its Just Make Cents</h2>
+  </div>
+
+  <div class="main-content">
+    <div class="login-form-container">
+      <form class="login-form">
+        <input type="text" placeholder="First and last name or username" required />
+        <input type="email" placeholder="Email address" required />
+        <input type="password" placeholder="Password" required />
+        <input type="password" placeholder="Confirm password" required />
+        <div class="form-footer">
+          <a href="#">Forgot Password?</a>
+        </div>
+        <div class="social-buttons">
+          <img src="images/google.png" alt="Google" class="social-icon" />
+          <img src="images/facebook.png" alt="Facebook" class="social-icon" />
+          <img src="images/instagram.png" alt="Instagram" class="social-icon" />
+        </div>
+        <button class="submit-button">Sign Up</button>
+      </form>
+    </div>
+    <img src="images/banner.png" alt="Website Banner" class="banner-img" />
+  </div>
+
+  <div class="navbar-bottom">
+    <p>Track Your Daily Spending, One Peso At A Time</p>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Monthly Calendar with Expenses</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #fff8ee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    
+    .logo {
+        position: absolute;     
+        top: 10px;             
+        left: 20px;            
+        width: 100px;            
+        height: auto;
+        z-index: 999;    
+    }
+
+    .calendar-container {
+        width: 700px;
+        background-color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .header img {
+        height: 40px;
+    }
+
+    .title {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 1rem 0.5rem;
+        margin-top: 2rem;
+    }
+
+    .day-label {
+        font-weight: bold;
+        color: #aa6d00;
+    }
+
+    .date-cell {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 1rem;
+        min-height: 50px;
+    }
+
+    .date-number {
+        margin-bottom: 0.25rem;
+    }
+
+    .dot {
+        width: 12px;
+        height: 12px;
+        background-color: #f4b258;
+        border-radius: 50%;
+        margin-top: 0.25rem;
+    }
+
+    .dot.today {
+        background-color: orange;
+        box-shadow: 0 0 5px orange;
+    }
+
+    .view-button {
+        margin-top: 2rem;
+        background-color: orange;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        padding: 0.75rem 2rem;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .view-button:hover {
+        background-color: darkorange;
+    }
+  </style>
+</head>
+<body>
+    <img src="images/logo.png" alt="Logo" class="logo">
+    <div class="calendar-container">
+        <div class="header">
+        <div class="title">Date</div>
+        <div style="width:40px;"></div>
+        </div>
+
+        <div class="calendar-grid" id="calendar-grid">
+        </div>
+
+        <button class="view-button">View Date Input</button>
+    </div>
+
+  <script src="script.js"></script> 
+</body>
+</html>

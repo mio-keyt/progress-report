@@ -1,0 +1,154 @@
+<!-- expense.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Centsibly - Expense Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #FFF7F2;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      color: #282C33;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header img.logo {
+      width: 40px;
+    }
+    img {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    .tracker-title {
+      font-style: italic;
+      font-weight: 600;
+      margin: 0 1rem;
+      flex-grow: 1;
+      text-align: center;
+    }
+    .main-section {
+      flex: 1;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .date-indicator {
+      margin-bottom: 1rem;
+      background-color: #FDEBD2;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-style: italic;
+      color: #333;
+    }
+    .calendar-selector {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    .carousel {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .carousel-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .carousel-label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+    .carousel img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid #F79D1F;
+    }
+    .no-expense-message {
+      font-style: italic;
+      color: #999;
+      margin: 1rem 0;
+    }
+    .expense-form {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 500px;
+    }
+    .expense-form input[type="text"],
+    .expense-form input[type="number"],
+    .expense-form input[type="file"] {
+      margin: 0.5rem 0;
+      padding: 0.7rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .expense-form button {
+      margin-top: 1rem;
+      background-color: #F79D1F;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .expense-form button:hover {
+      background-color: #e68a00;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="images/logo.png" alt="Logo" class="logo">
+    <h2 class="tracker-title">Date</h2>
+    <img src="images/calendar.png" alt="Calendar Icon" class="logo">
+  </header>
+
+  <section class="main-section">
+    <div class="date-indicator" id="date-indicator"></div>
+    <input type="date" id="calendar-selector" class="calendar-selector" onchange="updateSelectedDate()" />
+    <div class="carousel" id="carousel"></div>
+    <div class="no-expense-message" id="no-expense-message" style="display: none;">No logged expenses on this day.</div>
+
+    <form class="expense-form" onsubmit="addExpense(); return false;">
+      <input type="text" id="expense-title" placeholder="Title of Expense" required>
+      <input type="number" id="expense-price" placeholder="Price" required>
+      <input type="file" id="expense-image" accept="image/*">
+      <button type="submit">Log Expense</button>
+      <button type="button" onclick="deleteLastExpense()">Delete Last Expense</button>
+    </form>
+  </section>
+  <script src="script.js"></script>
+</body>
+</html>

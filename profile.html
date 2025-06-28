@@ -1,0 +1,148 @@
+<!-- profile.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
+  <title>Centsibly - Profile</title>
+  <style>
+    body.profile-page {
+      background-color: #fffaf3;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 30px;
+    }
+
+    .profile-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .user-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .profile-img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #f4a623;
+    }
+
+    .profile-button, .logout-button {
+      width: 160px;
+      padding: 10px;
+      background-color: #f4a623;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .logout-button {
+      background-color: #e74c3c;
+    }
+
+    .logout-button:hover {
+      background-color: #c0392b;
+    }
+
+    .analytics-section {
+      text-align: center;
+    }
+
+    .analytics-title {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    .view-input.light {
+      background-color: #ffe0a3;
+      color: #333;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="profile-page">
+  <main class="profile-container">
+    <div class="user-section">
+      <img src="images/awra.jpg" alt="User Photo" class="profile-img">
+      <button class="profile-button" id="username">Username</button>
+      <button class="profile-button" id="fullname">Name</button>
+      <button class="profile-button" id="email">Text</button>
+      <button class="logout-button" onclick="logout()">Log Out</button>
+    </div>
+
+    <div class="analytics-section">
+      <canvas id="analyticsChart" width="400" height="250"></canvas>
+      <h2 class="analytics-title">SPENDING ANALYTICS</h2>
+      <button class="view-input light" onclick="goBack()">Return</button>
+    </div>
+  </main>
+  <script src="script.js"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    function renderAnalyticsChart() {
+      const ctx = document.getElementById("analyticsChart");
+      if (!ctx) return;
+
+      const labels = [];
+      const totals = [];
+
+      for (let day = 1; day <= 7; day++) {
+        const data = JSON.parse(localStorage.getItem(`expenses-${day}`)) || [];
+        let total = 0;
+        data.forEach((item) => (total += item.price));
+        labels.push(`Day ${day}`);
+        totals.push(total);
+      }
+
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: "Expenses (₱)",
+              data: totals,
+              backgroundColor: ["#f4a623", "#e0aa3e", "#c67b00", "#ffaa00", "#ffcc80", "#ffb74d", "#e69900"],
+              borderColor: "#000",
+              borderWidth: 1
+            }
+          ]
+        },
+        options: {
+          scales: {
+            y: { beginAtZero: true }
+          }
+        }
+      });
+    }
+
+    function logout() {
+      alert("You have been logged out.");
+      window.location.href = "index.html";
+    }
+
+    function goBack() {
+      window.history.back();
+    }
+
+    renderAnalyticsChart();
+  </script>
+</body>
+</html>
